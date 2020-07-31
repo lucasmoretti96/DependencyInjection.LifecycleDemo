@@ -1,4 +1,4 @@
-﻿using DependencyInjection.LifecycleDemo.Service;
+﻿using DependencyInjection.LifecycleDemo.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -8,13 +8,13 @@ namespace DependencyInjection.LifecycleDemo.Controller
     [ApiController]
     public class HomeController : ControllerBase
     {
-        private readonly GuidServiceTransient _guidServiceTransient;
-        private readonly GuidServiceSingleton _guidServiceSingleton;
-        private readonly GuidServiceScoped _guidServiceScoped;
+        private readonly IGuidServiceTransient _guidServiceTransient;
+        private readonly IGuidServiceSingleton _guidServiceSingleton;
+        private readonly IGuidServiceScoped _guidServiceScoped;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(GuidServiceTransient guidServiceTransient, GuidServiceSingleton guidServiceSingleton,
-                              GuidServiceScoped guidServiceScoped, ILogger<HomeController> logger)
+        public HomeController(IGuidServiceTransient guidServiceTransient, IGuidServiceSingleton guidServiceSingleton,
+                              IGuidServiceScoped guidServiceScoped, ILogger<HomeController> logger)
         {
             _guidServiceTransient = guidServiceTransient;
             _guidServiceSingleton = guidServiceSingleton;

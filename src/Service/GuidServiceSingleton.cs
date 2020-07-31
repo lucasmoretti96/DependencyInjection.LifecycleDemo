@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DependencyInjection.LifecycleDemo.Interfaces;
+using System;
 
 namespace DependencyInjection.LifecycleDemo.Service
 {
-    public class GuidServiceSingleton
+    public class GuidServiceSingleton : IGuidServiceSingleton
     {
         private readonly Guid ServiceGuid;
 

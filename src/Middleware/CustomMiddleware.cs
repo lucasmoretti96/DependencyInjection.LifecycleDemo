@@ -1,4 +1,4 @@
-﻿using DependencyInjection.LifecycleDemo.Service;
+﻿using DependencyInjection.LifecycleDemo.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
@@ -16,18 +16,18 @@ namespace DependencyInjection.LifecycleDemo.Middleware
             _logger = logger;
         }
 
-        public async Task InvokeAsync(HttpContext context, GuidServiceTransient guidServiceTransient,
-                                      GuidServiceSingleton guidServiceSingleton, GuidServiceScoped guidServiceScoped)
+        public async Task InvokeAsync(HttpContext context, IGuidServiceTransient _guidServiceTransient,
+                                      IGuidServiceSingleton _guidServiceSingleton, IGuidServiceScoped _guidServiceScoped)
         {
-            var logMessage = $"Middleware: The Guid from GuidServiceTransient is {guidServiceTransient.GetGuid()}" +
-                $"The Guid from GuidServiceSingleton is {guidServiceSingleton.GetGuid()}" +
-                $"The Guid from GuidServiceScoped is {guidServiceScoped.GetGuid()}";
+            var logMessage = $"Middleware: The Guid from GuidServiceTransient is {_guidServiceTransient.GetGuid()}" +
+                $"The Guid from GuidServiceSingleton is {_guidServiceSingleton.GetGuid()}" +
+                $"The Guid from GuidServiceScoped is {_guidServiceScoped.GetGuid()}";
 
             _logger.LogInformation(logMessage);
 
             context.Items.Add("MiddlewareGuid", logMessage);
 
-            await _next(context);
+            await Task.WhenAll(_next(context));
         }
     }
 }

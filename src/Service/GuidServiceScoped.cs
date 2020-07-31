@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DependencyInjection.LifecycleDemo.Interfaces;
+using System;
 
 namespace DependencyInjection.LifecycleDemo.Service
 {
-    public class GuidServiceScoped
+    public class GuidServiceScoped : IGuidServiceScoped
     {
         private readonly Guid ServiceGuid;
 
