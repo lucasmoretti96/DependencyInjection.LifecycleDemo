@@ -26,4 +26,3 @@
 		- Easiest to reason about
 
 	- Scoped: An instance per scope(request)
-		- 
