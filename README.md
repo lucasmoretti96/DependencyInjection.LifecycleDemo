@@ -1,17 +1,17 @@
 # DependencyInjection.LifecycleDemo
 	A simple program to study the lifecycle of dependency injection services in .NET
 
-#DependencyInjection
+# DependencyInjection
 
-##Benefits
+## Benefits
 	- Code reuse and maintenance
 	- Testable and extensive code
 	- Simple coding and can be applied in any situation where are different behaviors
 	
-##Disadvantages
+## Disadvantages
 	- Unecessary and excessive use can affect performance
 
-##Application lifecycle types
+## Application lifecycle types
 	- Singleton: One shared instance for the lifetime of the application
 		- Generally more perfomant
 		- Allocates less objects
